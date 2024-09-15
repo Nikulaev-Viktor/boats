@@ -19,7 +19,7 @@ class OrderCreateView(CreateView):
         context_data['boat'] = get_object_or_404(Boat, pk=self.kwargs.get('pk'))
         return context_data
 
-    def form_valid(self,form):
+    def form_valid(self, form):
         obj = form.save()
         send_order_email(obj)
         return super().form_valid(form)
